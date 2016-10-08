@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 
 //import net.sf.json.JSONObject;
 
-
 import org.json.JSONObject;
 
 import com.message.resp.Article;
@@ -72,7 +71,7 @@ public class Service {
             textMessage.setCreateTime(new Date().getTime());  
             textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);  
   
-            // 文本消息  
+            // 如果微信用户 输入的是文本消息
             if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {  
             	
                 respContent = "您发送的是文本消息！您说的是：" + requestMap.get("Content");
@@ -93,20 +92,8 @@ public class Service {
                 }
                //JSONObject jsonObject = new JSONObject(responseString);
                 //text = jsonObject.getString("text"); 
-            }  
-            // 图片消息  
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {  
-                respContent = "您发送的是图片消息！";  
-            }  
-            // 地理位置消息  
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {  
-                respContent = "您发送的是地理位置消息！";  
-            }  
-            // 链接消息  
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_LINK)) {  
-                respContent = "您发送的是链接消息！";  
-            }  
-            // 音频消息  
+            } 
+            //如果微信用户 输入的是 音频消息  
             else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) {  
                 respContent = "您发送的是音频消息！您说的是：" + requestMap.get("Recognition");  
                 
@@ -144,6 +131,19 @@ public class Service {
                 //目前只提取回复结果为文本信息的结果，因为这里只根据Json的text值进行提取
                 //可根据responseString的code值，提取相应的结果，如URL等
             }  
+            // 图片消息  
+            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {  
+                respContent = "您发送的是图片消息！";  
+            }  
+            // 地理位置消息  
+            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {  
+                respContent = "您发送的是地理位置消息！";  
+            }  
+            // 链接消息  
+            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_LINK)) {  
+                respContent = "您发送的是链接消息！";  
+            }  
+             
             // 事件推送  
 //            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)) {  
 //                // 事件类型  

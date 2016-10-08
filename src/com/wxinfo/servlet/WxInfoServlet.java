@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wxinfo.service.MyService;
 import com.wxinfo.service.Service;
 import com.wxinfo.util.CheckUtil;
 
@@ -61,8 +62,9 @@ public class WxInfoServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");  
         response.setCharacterEncoding("UTF-8");  
         // 调用核心业务类接收消息、处理消息  
-        String respMessage = Service.processRequest(request);  
-          
+       // String respMessage = Service.processRequest(request);  
+        String respMessage = MyService.processRequest(request); 
+        
         // 响应消息  
         PrintWriter out = response.getWriter();  
         out.print(respMessage);  
